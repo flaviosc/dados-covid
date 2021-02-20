@@ -1,6 +1,6 @@
 import { InfectadosPorRegiao } from './infectados-por-regiao.interfaces';
 
-export interface Dados {
+export interface EstatisticaCovid {
     version: number,
     country: string,
     lastUpdatedAtApify: string,

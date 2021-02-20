@@ -1,9 +1,11 @@
-<div style="display: block;">
+<app-loading *ngIf="estaCarregando"></app-loading>
+
+<div style="display: block;" *ngIf="!estaCarregando">
     <canvas baseChart
       [data]="polarAreaChartData"
       [labels]="polarAreaChartLabels"
       [legend]="polarAreaLegend"
       [chartType]="polarAreaChartType">
     </canvas>
-  </div>
+</div>
   

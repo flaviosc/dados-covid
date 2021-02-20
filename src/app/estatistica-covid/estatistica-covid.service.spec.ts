@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DadosService } from './dados.service';
+import { EstatisticaCovidService } from './estatistica-covid.service';
 
 describe('DadosService', () => {
-  let service: DadosService;
+  let service: EstatisticaCovidService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DadosService);
+    service = TestBed.inject(EstatisticaCovidService);
   });
 
   it('should be created', () => {
