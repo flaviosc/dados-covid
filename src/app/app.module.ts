@@ -5,11 +5,15 @@ import { ChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EstatisticaCovidComponent } from './estatistica-covid/estatistica-covid.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EstatisticaCovidComponent
+    EstatisticaCovidComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
