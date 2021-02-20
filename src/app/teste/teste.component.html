@@ -1,0 +1,21 @@
+<div>
+    <div class="spinner-border text-secondary" role="status" *ngIf="estaCarregando">
+        <span class="sr-only">Loading...</span>
+    
+    </div>
+    <p *ngIf="!estaCarregando"> País: {{ dados.country }} </p>
+    <p *ngIf="!estaCarregando"> Recuperados: {{ dados.recovered }} </p>
+    <p *ngIf="!estaCarregando"> Infectados: {{ dados.infected }} </p>
+
+    <div *ngIf="!estaCarregando">
+        <p>Infecções por região: </p>
+        <div *ngFor="let regiao of dados.infectedByRegion">
+            <ul>
+                <li>
+                    Região: {{ regiao.state }}
+                    <p> Infectados: {{ regiao.count }} </p>   
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
