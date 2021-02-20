@@ -1,7 +1,6 @@
-// import { Component, OnInit } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { ChartType } from 'chart.js';
-import { Label, SingleDataSet } from 'ng2-charts';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Label } from 'ng2-charts';
 import { finalize, take } from 'rxjs/operators';
 
 import { EstatisticaCovid } from './estatistica-covid.interfaces';
@@ -13,12 +12,23 @@ import { EstatisticaCovidService } from './estatistica-covid.service';
   styleUrls: ['./estatistica-covid.component.scss']
 })
 export class EstatisticaCovidComponent implements OnInit {
-  // PolarArea
-  public polarAreaChartLabels: Label[] = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
-  public polarAreaChartData: SingleDataSet = [300, 500, 100, 40, 120];
-  public polarAreaLegend = true;
+  
+  public barChartOptions: ChartOptions = {
+    responsive: true,
 
-  public polarAreaChartType: ChartType = 'polarArea';
+    scales: { xAxes: [{}], yAxes: [{}] },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+      }
+    }
+  };
+  public barChartLabels: Label[];
+  public barChartType: ChartType = 'bar';
+  public barChartLegend = true;
+
+  public barChartData: ChartDataSets[];
 
 
   dados: EstatisticaCovid;
@@ -56,7 +66,13 @@ export class EstatisticaCovidComponent implements OnInit {
   }
 
   onSuccess(response: EstatisticaCovid) {
-    this.dados = response;
+    // this.barChartLabels = response.infectedByRegion.map((item) => {
+    //   return item.state;
+    // });
+
+    this.barChartData = response.infectedByRegion.map((item) => {
+        return { data: [item.count], label: item.state };
+    });
   }
 
   onError(error) {
